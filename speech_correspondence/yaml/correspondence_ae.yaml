@@ -1,0 +1,26 @@
+!obj:pylearn2.train.Train {
+    dataset: &dataset !obj:load_correspondence_data.load_xy_data {
+        npy_fn_x: "%(dataset_npy_fn_x)s",  # path to dataset
+        npy_fn_y: "%(dataset_npy_fn_y)s",  # path to dataset
+        start: 0,
+        stop: null,
+        strip_dims: null,
+        reverse: %(reverse)s
+    },
+    model: !obj:pylearn2.models.mlp.MLP {
+        layers: [
+%(layer_str)s],
+        nvis: %(nvis)i,
+    },
+    algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
+        learning_rate: %(learning_rate)f,
+        batch_size: %(batch_size)i,
+        cost: !obj:pylearn2.costs.mlp.Default {},
+        monitoring_dataset: *dataset,
+        termination_criterion: !obj:pylearn2.termination_criteria.EpochCounter {
+            max_epochs: %(max_epochs)i,
+        },
+    },
+    save_path: "%(save_path)s/%(run_id)s.pkl",
+    save_freq: 1
+}

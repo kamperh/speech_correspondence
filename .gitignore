@@ -1,0 +1,10 @@
+*
+!*/
+!.*
+!*.py
+!*.pyx
+!*.yaml
+!*.txt
+!*.rst
+!*.ipynb
+!Makefile

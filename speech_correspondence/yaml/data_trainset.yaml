@@ -1,0 +1,7 @@
+!obj:load_correspondence_data.load_data {
+    npy_fn: "%(dataset_npy_fn)s",  # path to dataset
+    start: 0,
+    stop: null,  # 360000 corresponds to 1 hour (use null for everything)
+    strip_dims: %(strip_dims)s,  # 13 won't use deltas (use null for everything)
+    stack_n_frames: %(stack_n_frames)i  # 1, 9 or 11 is typical
+}

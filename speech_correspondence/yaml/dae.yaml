@@ -1,0 +1,23 @@
+!obj:pylearn2.train.Train {
+    dataset: &trainset %(trainset)s,
+    model: !obj:pylearn2.models.autoencoder.DenoisingAutoencoder {
+        nvis: %(nvis)i,
+        nhid: %(nhid)i,
+        irange: 0.05,
+        act_enc: "tanh",
+        act_dec: null,  # linear activation on decoding side
+        tied_weights: %(tied_weights)s,
+        corruptor: %(corruptor)s,
+    },
+    algorithm: !obj:pylearn2.training_algorithms.sgd.SGD {
+        learning_rate: %(learning_rate)f,
+        batch_size: %(batch_size)i,
+        monitoring_dataset: *trainset,
+        cost: !obj:pylearn2.costs.autoencoder.MeanSquaredReconstructionError {},
+        termination_criterion: !obj:pylearn2.termination_criteria.EpochCounter {
+            max_epochs: %(max_epochs)i,
+        },
+    },
+    save_path: "%(save_path)s/%(run_id)s.layer%(layer)i.pkl",
+    save_freq: 1
+}

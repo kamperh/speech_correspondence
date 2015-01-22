@@ -1,0 +1,5 @@
+!obj:pylearn2.models.mlp.Linear {
+    layer_name: %(layer_name)s,
+    dim: %(dims)d,
+    irange: 0.05
+}

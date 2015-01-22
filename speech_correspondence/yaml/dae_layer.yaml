@@ -1,0 +1,11 @@
+!obj:pylearn2.models.autoencoder.DenoisingAutoencoder {
+    nvis: %(nvis)i,
+    nhid: %(nhid)i,
+    irange: 0.05,
+    act_enc: "tanh",
+    act_dec: null,  # linear activation on decoding side
+    tied_weights: %(tied_weights)s,
+    corruptor: !obj:pylearn2.corruption.BinomialCorruptor {
+        corruption_level: %(corruption_level)f,
+    },
+}

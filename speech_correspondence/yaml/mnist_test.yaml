@@ -1,0 +1,4 @@
+!obj:pylearn2.datasets.mnist.MNIST {
+    which_set: "test",
+    # one_hot: 1,
+}
