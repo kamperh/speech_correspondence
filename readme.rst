@@ -13,6 +13,13 @@ Collaborators
 
 
 
+Dependencies
+============
+- Theano: http://deeplearning.net/software/theano/
+- Pylearn2: http://deeplearning.net/software/pylearn2/
+
+
+
 Typical steps
 =============
 
@@ -42,3 +49,14 @@ Typical steps
 
 5.  Finally, test data can be encoded using ./speech_correspondence/encode.py.
     Run this program without any command line parameters to see its options.
+
+
+References
+==========
+
+If you used this code, please cite:
+
+- H. Kamper, M. Elsner, A. Jansen, and S. J. Goldwater, "Unsupervised neural
+  network based feature extraction using weak top-down constraints," accepted
+  for presentation at the IEEE International Conference on Acoustics, Speech
+  and Signal Processing (ICASSP), 2015.
