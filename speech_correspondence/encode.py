@@ -12,6 +12,7 @@ from os import path
 from pylearn2.utils import serial
 from theano import function
 import argparse
+import numpy as np
 import pylearn2.models.autoencoder
 import pylearn2.models.mlp
 import sys
