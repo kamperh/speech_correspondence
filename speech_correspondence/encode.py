@@ -110,7 +110,7 @@ def main():
         (".layer" + str(args.use_layer) if args.use_layer is not None else "") + ".npz"
         )
     print "Writing encoding:", encoded_fn
-    serial.save(encoded_fn, result)
+    numpy.savez(encoded_fn, **result)
 
 
 if __name__ == "__main__":
