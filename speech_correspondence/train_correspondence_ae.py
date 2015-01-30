@@ -28,6 +28,7 @@ theano.gof.compilelock.set_lock_status(False)
 parameter_dict = {
     "dataset_npy_fn_x": "../../data/input/mfcc_train_htk_word1_frames.std80k.npy",
     "dataset_npy_fn_y": "../../data/input/mfcc_train_htk_word2_frames.std80k.npy",
+    "models_basedir": "models/",
     "dim_input": 39,
     "layer_spec_str": "[100] * 9",
     "corruption": 0,
@@ -67,7 +68,7 @@ correspondence_ae_parameter_dict = {
     "batch_size": parameter_dict["batch_size"],
     "max_epochs": parameter_dict["max_epochs"],
     "learning_rate": parameter_dict["learning_rate"],
-    "save_path": "models/" + model_dir,
+    "save_path": parameter_dict["models_basedir"] + model_dir,
     "run_id": run_id,
     }
 load_dae_basename = path.join(correspondence_ae_parameter_dict["save_path"], "dae")

@@ -30,6 +30,7 @@ TRANSFORMER = "!obj:pylearn2.datasets.transformer_dataset.TransformerDataset"
 # Network parameter settings
 parameter_dict = {
     "dataset_npy_fn": "../../data/mfcc_pretrain_htk_update.npy",
+    "models_basedir": "models/",
     "dim_input": 39,
     "layer_spec_str": "[100] * 9",
     "corruption": 0,
@@ -63,7 +64,7 @@ dae_yaml_dict = {
     "batch_size": parameter_dict["batch_size"],
     "max_epochs": parameter_dict["max_epochs"],
     "learning_rate": parameter_dict["learning_rate"],
-    "save_path": "models/" + model_dir,
+    "save_path": parameter_dict["models_basedir"] + model_dir,
     "run_id": "dae",
     "tied_weights": False
     }
