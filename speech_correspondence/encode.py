@@ -5,7 +5,7 @@ Encode a given test set using a specified model.
 
 Authors: Micha Elsner, Herman Kamper
 Contact: h.kamper@sms.ed.ac.uk
-Date: 2014
+Date: 2014-2015
 """
 
 from os import path
@@ -20,7 +20,7 @@ import theano.tensor as T
 
 theano.gof.compilelock.set_lock_status(False)
 
-output_dir = "../../data/encoded/"
+output_dir = "encoded/"
 
 
 #-----------------------------------------------------------------------------#
@@ -110,7 +110,7 @@ def main():
         (".layer" + str(args.use_layer) if args.use_layer is not None else "") + ".npz"
         )
     print "Writing encoding:", encoded_fn
-    numpy.savez(encoded_fn, **result)
+    np.savez(encoded_fn, **result)
 
 
 if __name__ == "__main__":
