@@ -82,10 +82,10 @@ def train(parameter_dict):
     load_dae_basename = path.join(correspondence_ae_parameter_dict["save_path"], "dae")
 
     # Filenames
-    dae_yaml_fn = "yaml/dae_layer.yaml"
-    mlp_pretrained_yaml_fn = "yaml/mlp_pretrained.yaml"
-    mlp_linear_yaml_fn = "yaml/mlp_linear.yaml"
-    correspondence_ae_yaml_fn = "yaml/correspondence_ae.yaml"
+    dae_yaml_fn = path.join(basedir, "yaml/dae_layer.yaml")
+    mlp_pretrained_yaml_fn = path.join(basedir, "yaml/mlp_pretrained.yaml")
+    mlp_linear_yaml_fn = path.join(basedir, "yaml/mlp_linear.yaml")
+    correspondence_ae_yaml_fn = path.join(basedir, "yaml/correspondence_ae.yaml")
 
     # Write parameters to file
     if not path.isdir(correspondence_ae_parameter_dict["save_path"]):
@@ -165,4 +165,7 @@ def main():
 
 
 if __name__ == "__main__":
+    basedir = path.split(sys.argv[0])[0]
     main()
+else:
+    basedir = path.split(__file__)[0]

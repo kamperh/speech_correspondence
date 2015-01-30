@@ -76,8 +76,8 @@ def train(parameter_dict):
         }
 
     # Filenames
-    trainset_yaml_fn = "yaml/data_trainset.yaml"
-    dae_yaml_fn = "yaml/dae.yaml"
+    trainset_yaml_fn = path.join(basedir, "yaml/data_trainset.yaml")
+    dae_yaml_fn = path.join(basedir, "yaml/dae.yaml")
 
     # Write parameters to file
     if not path.isdir(dae_yaml_dict["save_path"]):
@@ -151,4 +151,7 @@ def main():
 
 
 if __name__ == "__main__":
+    basedir = path.split(sys.argv[0])[0]
     main()
+else:
+    basedir = path.split(__file__)[0]
