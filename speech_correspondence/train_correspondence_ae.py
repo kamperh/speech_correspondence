@@ -31,9 +31,10 @@ parameter_dict_ = {
     "models_basedir": "models/",
     "dim_input": 39,
     "layer_spec_str": "[100] * 9",
-    "corruption": 0,
+    "dae_corruption": 0,  # these dae parameters specify which pretrained model to use
+    "dae_max_epochs": 5,
     "max_epochs": 120,
-    "batch_size": 4096,
+    "batch_size": 2048,
     "learning_rate": 0.064,
     "start_from_scratch": False,  # do not initialize from other model, but start from scratch
     "reverse": False,  # do pairs both ways
@@ -56,15 +57,19 @@ def train(parameter_dict):
         "[\ \[\]]", "", parameter_dict["layer_spec_str"]
         ).replace("*", "x").replace(",", "-")
     if not parameter_dict["start_from_scratch"]:
-        for var in sorted(["corruption", "batch_size"]):
-            model_dir += "." + var + str(parameter_dict[var])
+        for var in sorted(
+                [i.replace("dae_", "") for i in ["dae_corruption", "batch_size", "dae_max_epochs"]]):
+            if "dae_" + var in parameter_dict:
+                model_dir += "." + var + str(parameter_dict["dae_" + var])
+            else:
+                model_dir += "." + var + str(parameter_dict[var])
 
     # Output filename
     run_id = "correspondence_ae"
     run_id += "." + path.splitext(
         path.split(parameter_dict["dataset_npy_fn_x"])[-1]
-        )[0].replace("_word1", "")
-    for var in sorted(["max_epochs"]):
+        )[0].replace(".word1", "")
+    for var in sorted(["max_epochs", "reverse"]):
         run_id += "." + var + str(parameter_dict[var])
 
     # Correspondence parameter dict
@@ -120,8 +125,8 @@ def train(parameter_dict):
             layer_content = dae_yaml % {
                 "nvis": nvis,
                 "nhid": nhid,
-                "corruption_level": corruption_level,  # this isn't actually used
-                "tied_weights": tied_weights
+                "corruption_level": 0,  # this isn't actually used
+                "tied_weights": False
                 }
             mlp_pretrained_yaml = mlp_pretrained_yaml % {
                 "layer_name":  "'layer" + str(i_layer) + "'",

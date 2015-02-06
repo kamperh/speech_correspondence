@@ -55,8 +55,13 @@ def train(parameter_dict):
     model_dir = re.sub(
         "[\ \[\]]", "", parameter_dict["layer_spec_str"]
         ).replace("*", "x").replace(",", "-")
-    for var in sorted(["corruption", "batch_size"]):
+    for var in sorted(["corruption", "batch_size", "max_epochs"]):
         model_dir += "." + var + str(parameter_dict[var])
+
+     # Output filename
+     run_id = "dae"
+     # for var in sorted(["max_epochs"]):
+     #     run_id += "." + var + str(parameter_dict[var])
 
     # Trainset parameter dict
     trainset_yaml_dict = {
@@ -71,7 +76,7 @@ def train(parameter_dict):
         "max_epochs": parameter_dict["max_epochs"],
         "learning_rate": parameter_dict["learning_rate"],
         "save_path": parameter_dict["models_basedir"] + model_dir,
-        "run_id": "dae",
+        "run_id": run_id,
         "tied_weights": False
         }
 
