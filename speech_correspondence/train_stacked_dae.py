@@ -58,10 +58,10 @@ def train(parameter_dict):
     for var in sorted(["corruption", "batch_size", "max_epochs"]):
         model_dir += "." + var + str(parameter_dict[var])
 
-     # Output filename
-     run_id = "dae"
-     # for var in sorted(["max_epochs"]):
-     #     run_id += "." + var + str(parameter_dict[var])
+    # Output filename
+    run_id = "dae"
+    # for var in sorted(["max_epochs"]):
+    #     run_id += "." + var + str(parameter_dict[var])
 
     # Trainset parameter dict
     trainset_yaml_dict = {
