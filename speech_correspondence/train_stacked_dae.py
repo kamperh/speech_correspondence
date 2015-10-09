@@ -86,7 +86,7 @@ def train(parameter_dict):
 
     # Write parameters to file
     if not path.isdir(dae_yaml_dict["save_path"]):
-        os.mkdir(dae_yaml_dict["save_path"])
+        os.makedirs(dae_yaml_dict["save_path"])
     open(path.join(dae_yaml_dict["save_path"], "train_stacked_dae.parameters.dict"), "w").write(
         str(parameter_dict) + "\n"
         )

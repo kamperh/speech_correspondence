@@ -94,7 +94,7 @@ def train(parameter_dict):
 
     # Write parameters to file
     if not path.isdir(correspondence_ae_parameter_dict["save_path"]):
-        os.mkdir(correspondence_ae_parameter_dict["save_path"])
+        os.makedirs(correspondence_ae_parameter_dict["save_path"])
     open(
         path.join(correspondence_ae_parameter_dict["save_path"],
         "train_correspondence_ae.parameters.dict"), "w").write(str(parameter_dict) + "\n"
