@@ -105,6 +105,8 @@ def main():
     model_dir, model_basename = path.split(args.model_fn)
     model_basename = path.splitext(model_basename)[0]
     model_basename = path.split(model_dir)[-1] + "." + model_basename
+    if not path.isdir(output_dir):
+        os.makedirs(output_dir)
     encoded_fn = path.join(
         output_dir, 
         "encoded." + input_basename + "." + model_basename + 
