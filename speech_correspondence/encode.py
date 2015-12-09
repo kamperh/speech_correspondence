@@ -13,6 +13,7 @@ from pylearn2.utils import serial
 from theano import function
 import argparse
 import numpy as np
+import os
 import pylearn2.models.autoencoder
 import pylearn2.models.mlp
 import sys
